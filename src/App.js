@@ -18,7 +18,7 @@ function App() {
         en={quote.en}
         author={quote.author}
         id={quote.id}
-        onQuoteClicked={onQuoteClicked}
+        onClick={onQuoteClicked}
       />
     );
   });
@@ -37,7 +37,13 @@ function App() {
      *
      * depending on which button has been clicked
      * */
-    
+    if (newStatus === "👎") {
+      setDislikeCounter(dislikeCount + 1);
+    } else if (newStatus === "👍") {
+      setLikeCounter(likeCount + 1);
+    } else if (newStatus === "💛") {
+      setSuperlikeCounter(superlikeCount + 1);
+    }
   }
 
   function getQuotes() {

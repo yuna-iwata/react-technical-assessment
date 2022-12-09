@@ -6,6 +6,7 @@ export default function Quote(props) {
   function setStatus(emojiClicked) {
     setStatusState(emojiClicked);
     props.onClick(emojiClicked);
+    console.log(status);
   }
 
   /*
@@ -55,9 +56,21 @@ export default function Quote(props) {
       <blockquote id="quote">{props.en}</blockquote>
       <p id="author">-- {props.author}</p>
       <div className="button-block">
-        <button> dislike 👎</button>
-        <button>like 👍</button>
-        <button>superlike 💛</button>
+        {status === undefined && (
+          <div>
+            <button id="dislike" onClick={() => setStatus("👎")}>
+              {" "}
+              dislike 👎
+            </button>
+            <button id="like" onClick={() => setStatus("👍")}>
+              like 👍
+            </button>
+            <button id="superlike" onClick={() => setStatus("💛")}>
+              superlike 💛
+            </button>
+          </div>
+        )}
+        {status !== undefined && getStatusComponent(status)}
       </div>
     </div>
   );
